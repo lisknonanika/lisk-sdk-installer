@@ -35,6 +35,7 @@ node index.js will start the node, and | npx bunyan -o short
 <br><br>
 ## 注意
 別の何かで使用している環境に導入した場合、依存関係等の変更により動かなくなっても責任とりません。
+<br>
 出来る限りLisk SDK専用のUbuntuで実行することをお勧めします。
 <br><br>
 以上
