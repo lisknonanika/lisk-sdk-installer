@@ -59,7 +59,7 @@ create_myproject () {
 }
 
 echo "Lisk SDKの実行環境を構築しますか？[y/N]"
-read -p "y or n: " input1
+read -p "Y or N: " input1
 
 if [ "$input1" = "y" -o  "$input1" = "Y" ] ; then
   update_apt
@@ -71,9 +71,34 @@ fi
 
 echo "Lisk SDKのプロジェクトを作成しますか？[y/N]"
 echo "note: 実行環境を構築していない場合、動かすことができないのでご注意ください。"
-read -p "y or n: " input2
+read -p "Y or N: " input2
 if [ "$input2" = "y" -o  "$input2" = "Y" ] ; then
   create_myproject
+fi
+
+echo "Do you want Super Lisk Power?[y/N]"
+read -p "Y or N: " input3
+if [ "$input3" = "y" -o  "$input3" = "Y" ] ; then
+  echo "You got power !!!!!!"
+  echo "                                     .,"
+  echo "                                    .MMe"
+  echo "                                   .MMMMp"
+  echo "                                   ?MMMMMb"
+  echo "                                 .h -MMMMMh"
+  echo "                                JMMN.,MMMMMN."
+  echo "                               dMMMMN .MMMMMN,                 .g                                  .g"
+  echo "                             .MMMMMM'  .MMMMMN,               .M#                                 (M#"
+  echo "                            .MMMMM#      WMMMMM,            .MMM#                               .MMM#"
+  echo "                           .MMMMM@        UMMMMMe          .MMMM#             .<   .+MMMMNa,   .MMMM#   .NNNNN^"
+  echo "                          .MMMMMD          TMMMMMp         .MMMM#           .dM)  dMMMMMMMMMN, .MMMM#  JMMMM#!"
+  echo "                         .MMMMMF            ?MMMMMb        .MMMM#          .MMM) .MMMMF .T9^   .MMMM#.dMMMMD"
+  echo "                        .MMMMMD              (MMMMMh       .MMMM#         MMMMM) .MMMMMMNNg,   .MMMMNMMMMMD"
+  echo "                       .WMMMMMN,            .dMMMMM#'      .MMMM#         MMMMM)   TMMMMMMMMMe .MMMMMMMMMN."
+  echo "                         (MMMMMMh.        .JMMMMMM3        .MMMMN........ MMMMM)   .., _TMMMMM .MMMM#(MMMMN,"
+  echo "                           7MMMMMMagggg! .MMMMMMD          .MMMMMMMMMMMM} MMMMM) +MMMMNNMMMMM# .MMMM# .MMMMMp"
+  echo "                             TMMMMMMMD .MMMMMMB!           .MMMMMMMMMMMM} MMMMM)  TMMMMMMMMMD  .MMMM#   UMMMMN."
+  echo "                              ,MMMMB!.JMMMMMM^"
+  echo ""
 fi
 
 exit 0
