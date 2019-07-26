@@ -1,7 +1,6 @@
 #!/bin/bash
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
-POSTGRE_PASSWORD=
 DEFAULT_PROJECT_DIR_NAME="myproject"
 PROJECT_DIR=
 
