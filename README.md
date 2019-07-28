@@ -28,7 +28,7 @@ sh lisk-sdk-installer/install.sh
 <br><br>
 プロジェクトが作成されたら、以下を端末で実行して下さい。
 <br>
-`cd ~/lisk-dev/<作成時につけたプロジェクト名>`
+`cd ~/lisk_dev/<作成時につけたプロジェクト名>`
 <br>
 `node index.js will start the node, and | npx bunyan -o short`
 <br><br>
