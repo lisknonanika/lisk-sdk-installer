@@ -10,6 +10,7 @@ Ubuntu上にLisk SDKのプロジェクト作成するための環境を構築す
     - DB名： lisk_dev
     - ユーザー名： lisk
     - パスワード： password
+    - Docker： lisk_sdk_db ※環境構築時にPostgreSQLをDockerで動かすようにした場合
   
 - PM2 のインストール
 - プロジェクトのテンプレート作成 (npm install & lisk-sdkの導入 & 動作確認用のindex.js の追加)
@@ -30,7 +31,7 @@ sh lisk-sdk-installer/install.sh
 <br>
 `cd ~/lisk_dev/<作成時につけたプロジェクト名>`
 <br>
-`node index.js will start the node, and | npx bunyan -o short`
+`node index.js | npx bunyan -o short`
 <br><br>
 ## 注意
 別の何かで使用している環境に導入した場合、依存関係等の変更により動かなくなっても責任とりません。
