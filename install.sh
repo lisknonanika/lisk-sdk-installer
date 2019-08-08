@@ -9,23 +9,38 @@ update_apt () {
 }
 
 insert_lib () {
-  sudo apt install -y python build-essential curl automake autoconf libtool ntp git
-}
-
-install_node () {
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-  . ~/.nvm/nvm.sh
-  . ~/.profile
-  . ~/.bashrc
-  export NVM_DIR="$HOME/.nvm"
-  nvm install 10.15.3
-}
-
-insert_pm2 () {
-  npm install pm2 -g
+  sudo apt install -y python-minimal build-essential curl git
 }
 
 setup_postgre () {
+  echo "Dockerを使用してPostgreSQLを実行しますか？[Y/n]"
+  echo "Y:Dockerを使用する, N:Dockerを使用しない"
+  read -p "Y or N: " input
+  if [ -z "$input" -o "$input" = "y" -o  "$input" = "Y" ] ; then
+    setup_postgre_docker
+  else
+    setup_postgre_system_wide
+  fi
+}
+
+setup_postgre_docker () {
+  sudo docker stop lisk_sdk_db
+  sudo docker rm lisk_sdk_db
+  sudo apt-get remove docker docker-engine docker.io containerd runc
+  sudo apt-get update
+  sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  sudo apt-key fingerprint 0EBFCD88
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  sudo apt-get update
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  sudo docker run --name lisk_sdk_db -p 5432:5432 -e POSTGRES_USER=lisk -e POSTGRES_PASSWORD=password -e POSTGRES_DB=lisk_dev -d postgres:10
+  sudo docker start lisk_sdk_db
+  sudo docker exec --tty --interactive lisk_sdk_db psql -h localhost -U lisk -d postgres
+}
+
+setup_postgre_system_wide () {
   sudo apt-get purge -y postgres* # remove all already installed postgres versions
   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
   sudo apt install wget ca-certificates
@@ -58,15 +73,27 @@ create_myproject () {
   cp $SCRIPT_DIR/index.js $PROJECT_DIR/index.js
 }
 
+install_node () {
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  . ~/.nvm/nvm.sh
+  . ~/.profile
+  . ~/.bashrc
+  export NVM_DIR="$HOME/.nvm"
+  nvm install 10.15.3
+}
+
+insert_pm2 () {
+  npm install pm2 -g
+}
+
 echo "Lisk SDKの実行環境を構築しますか？[y/N]"
 read -p "Y or N: " input1
-
 if [ "$input1" = "y" -o  "$input1" = "Y" ] ; then
   update_apt
   insert_lib
+  setup_postgre
   install_node
   insert_pm2
-  setup_postgre
 fi
 
 echo "Lisk SDKのプロジェクトを作成しますか？[y/N]"
@@ -80,6 +107,7 @@ echo "Do you want Super Lisk Power?[y/N]"
 read -p "Y or N: " input3
 if [ "$input3" = "y" -o  "$input3" = "Y" ] ; then
   echo "You got power !!!!!!"
+  echo ""
   echo "                                     .,"
   echo "                                    .MMe"
   echo "                                   .MMMMp"
@@ -98,6 +126,8 @@ if [ "$input3" = "y" -o  "$input3" = "Y" ] ; then
   echo "                           7MMMMMMagggg! .MMMMMMD          .MMMMMMMMMMMM} MMMMM) +MMMMNNMMMMM# .MMMM# .MMMMMp"
   echo "                             TMMMMMMMD .MMMMMMB!           .MMMMMMMMMMMM} MMMMM)  TMMMMMMMMMD  .MMMM#   UMMMMN."
   echo "                              ,MMMMB!.JMMMMMM^"
+  echo ""
+  echo ""
   echo ""
 fi
 
