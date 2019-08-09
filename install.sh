@@ -13,9 +13,9 @@ insert_lib () {
 }
 
 setup_postgre () {
-  echo "Dockerを使用してPostgreSQLを実行しますか？[Y/n]"
-  echo "Y:Dockerを使用する, N:Dockerを使用しない"
-  read -p "Y or N: " input
+  echo "Dockerを使用してPostgreSQLを実行することをおススメします。"
+  echo "Dockerを使用する場合はY、使用しない場合はNを入力して下さい。"
+  read -p "Dockerを使用しますか？[Y/n] " input
   if [ -z "$input" -o "$input" = "y" -o  "$input" = "Y" ] ; then
     setup_postgre_docker
   else
@@ -86,8 +86,7 @@ insert_pm2 () {
   npm install pm2 -g
 }
 
-echo "Lisk SDKの実行環境を構築しますか？[y/N]"
-read -p "Y or N: " input1
+read -p "Lisk SDKの実行環境を構築しますか？[y/N]: " input1
 if [ "$input1" = "y" -o  "$input1" = "Y" ] ; then
   update_apt
   insert_lib
@@ -96,15 +95,14 @@ if [ "$input1" = "y" -o  "$input1" = "Y" ] ; then
   insert_pm2
 fi
 
-echo "Lisk SDKのプロジェクトを作成しますか？[y/N]"
-echo "note: 実行環境を構築していない場合、動かすことができないのでご注意ください。"
-read -p "Y or N: " input2
+echo "SDKのプロジェクトのテンプレートを作成することができます。"
+echo "実行環境を構築していない場合、動かすことができないのでご注意ください。"
+read -p "Lisk SDKのプロジェクトを作成しますか？[y/N]: " input2
 if [ "$input2" = "y" -o  "$input2" = "Y" ] ; then
   create_myproject
 fi
 
-echo "Do you want Super Lisk Power?[y/N]"
-read -p "Y or N: " input3
+read -p "Do you want Super Lisk Power?[y/N]: " input3
 if [ "$input3" = "y" -o  "$input3" = "Y" ] ; then
   echo "You got power !!!!!!"
   echo ""
