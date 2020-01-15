@@ -32,6 +32,8 @@ sh lisk-sdk-installer/install.sh
 `cd ~/lisk_dev/<作成時につけたプロジェクト名>`
 <br>
 `node index.js | npx bunyan -o short`
+または
+pm2 start index.js
 <br><br>
 ## 注意
 別の何かで使用している環境に導入した場合、依存関係等の変更により動かなくなっても責任とりません。
