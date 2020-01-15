@@ -1,5 +1,6 @@
 const { Application, genesisBlockDevnet, configDevnet} = require('lisk-sdk'); // require the lisk-sdk package
 
+configDevnet.modules.http_api.access.public = true; // API Public access
 const app = new Application(genesisBlockDevnet, configDevnet); // create a new application with default genesis block for a local devnet
 
 app.run() // start the application
