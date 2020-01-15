@@ -4,7 +4,7 @@ Ubuntu上にLisk SDKのプロジェクト作成するための環境を構築す
 <br><br>
 #### 使用すると、以下が行われます。
 - 必要なライブラリの導入 (Python, Curl, Git など)
-- Node.js 10.15.3 のインストール
+- Node.js 10.17.0 のインストール
 - PostgreSQL 10 のインストール
   - 構築されるDBは以下の通り
     - DB名： lisk_dev
@@ -20,7 +20,7 @@ Ubuntu上にLisk SDKのプロジェクト作成するための環境を構築す
 UbuntuにLisk SDKのプロジェクトを作成したいユーザーでログイン後、端末で install.sh を実行して下さい。(以下、例)
 <br>
 `
-sh lisk-sdk-installer/install.sh
+bash lisk-sdk-installer/install.sh
 `
 <br><br>
 ※環境構築とプロジェクト作成は分けて実行できます。(実行前に Yes or No が聞かれます)
