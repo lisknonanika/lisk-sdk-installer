@@ -37,6 +37,10 @@ bash lisk-sdk-installer/install.sh
 <br>
 `pm2 start index.js`
 <br><br>
+上記を実行後
+http:localhost:4000/api/transactions
+などで実行されているか確認できます。
+
 ## 注意
 別の何かで使用している環境に導入した場合、依存関係等の変更により動かなくなっても責任とりません。
 <br>
