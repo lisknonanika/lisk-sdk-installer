@@ -54,6 +54,8 @@ setup_postgre_system_wide () {
 }
 
 create_myproject () {
+  . ~/.profile
+  . ~/.bashrc
   echo "Lisk SDKを使う、あなたのプロジェクト名を入力して下さい。"
   echo "note: プロジェクトのフォルダは ~/lisk-dev/ の下に作成されます。"
   echo "note: 未設定の場合は myproject という名前で作成されます。"
@@ -81,6 +83,8 @@ install_node () {
 }
 
 insert_pm2 () {
+  . ~/.profile
+  . ~/.bashrc
   npm install pm2 -g
 }
 
