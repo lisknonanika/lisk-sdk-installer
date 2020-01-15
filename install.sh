@@ -34,10 +34,8 @@ setup_postgre_docker () {
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   sudo apt-get update
   sudo apt-get install docker-ce docker-ce-cli containerd.io
-  sudo apt-get install docker-ce docker-ce-cli containerd.io
   sudo docker run --name lisk_sdk_db -p 5432:5432 -e POSTGRES_USER=lisk -e POSTGRES_PASSWORD=password -e POSTGRES_DB=lisk_dev -d postgres:10
   sudo docker start lisk_sdk_db
-  sudo docker exec --tty --interactive lisk_sdk_db psql -h localhost -U lisk -d postgres
 }
 
 setup_postgre_system_wide () {
@@ -74,12 +72,12 @@ create_myproject () {
 }
 
 install_node () {
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
   . ~/.nvm/nvm.sh
   . ~/.profile
   . ~/.bashrc
   export NVM_DIR="$HOME/.nvm"
-  nvm install 10.15.3
+  nvm install 10.17.0
 }
 
 insert_pm2 () {
