@@ -74,12 +74,12 @@ create_myproject () {
 }
 
 install_node () {
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
   . ~/.nvm/nvm.sh
   . ~/.profile
   . ~/.bashrc
   export NVM_DIR="$HOME/.nvm"
-  nvm install 10.17.0
+  nvm install 12.15.0
 }
 
 insert_pm2 () {
